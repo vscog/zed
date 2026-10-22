@@ -1314,4 +1314,51 @@
       "shift-tab": "skill_creator::FocusPreviousField",
     },
   },
+{
+  "context": "Workspace",
+  "bindings": {
+    "ctrl-\\": "terminal_panel::Toggle"
+  }
+},
+{
+  "context": "Editor && vim_mode == normal && !menu",
+  "bindings": {
+    "space w": "workspace::Save",
+    "space q": "pane::CloseActiveItem",
+    "space f f": "file_finder::Toggle",
+    "space f g": "pane::DeploySearch",
+    "space /": "pane::DeploySearch",
+    "space f b": "tab_switcher::Toggle",
+    "space space": "tab_switcher::Toggle",
+    "space f s": "outline::Toggle",
+    "space f d": "diagnostics::Deploy",
+    "space f c": "command_palette::Toggle",
+    "space e": "project_panel::ToggleFocus",
+    "space g g": "git_panel::ToggleFocus",
+    "space g s": "git_panel::ToggleFocus",
+    "space c r": "editor::Rename",
+    "space c a": "editor::ToggleCodeActions",
+    "space c f": "editor::Format",
+    "space b d": "pane::CloseActiveItem",
+    "shift-h": "pane::ActivatePreviousItem",
+    "shift-l": "pane::ActivateNextItem",
+    "space z z": "terminal_panel::Toggle",
+    "space z h": "terminal_panel::Toggle",
+    "space v": "pane::SplitRight",
+    "space s": "pane::SplitDown",
+    "ctrl-h": "workspace::ActivatePaneLeft",
+    "ctrl-j": "workspace::ActivatePaneDown",
+    "ctrl-k": "workspace::ActivatePaneUp",
+    "ctrl-l": "workspace::ActivatePaneRight"
+  }
+},
+{
+  "context": "ProjectPanel",
+  "bindings": {
+    "ctrl-h": "workspace::ActivatePaneLeft",
+    "ctrl-j": "workspace::ActivatePaneDown",
+    "ctrl-k": "workspace::ActivatePaneUp",
+    "ctrl-l": "workspace::ActivatePaneRight"
+  }
+}
 ]

@@ -1,0 +1,61 @@
+{
+  "theme": {
+    "mode": "dark",
+    "dark": "Groove Ink Black",
+    "light": "One Light"
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "toggle_relative_line_numbers": true,
+    "use_smartcase_find": true
+  },
+  "ui_font_family": "Inter",
+  "ui_font_size": 13,
+  "buffer_font_family": "GeistMono Nerd Font Mono",
+  "buffer_font_size": 13.33,
+  "buffer_line_height": "comfortable",
+  "relative_line_numbers": "enabled",
+  "window_decorations": "server",
+  "title_bar": {
+    "show_branch_name": true,
+    "show_branch_status_icon": true,
+    "show_onboarding_banner": false,
+    "show_user_picture": false,
+    "show_sign_in": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false,
+    "selections_menu": false
+  },
+  "project_panel": {
+    "dock": "left",
+    "default_width": 250,
+    "auto_reveal_entries": true
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "terminal": {
+    "dock": "bottom",
+    "default_height": 260,
+    "font_family": "GeistMono Nerd Font Mono",
+    "font_size": 13.33,
+    "working_directory": "current_project_directory"
+  },
+  "indent_guides": {
+    "enabled": true
+  },
+  "inlay_hints": {
+    "enabled": false
+  },
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "use_smartcase_search": true,
+  "format_on_save": "on",
+  "which_key": {
+    "enabled": true
+  }
+}
