@@ -5,6 +5,7 @@ use editor::{Editor, actions::DiffClipboardWithSelectionData};
 use workspace::{Toast, notifications::NotificationId};
 
 mod blame_ui;
+mod gitea_comments;
 pub mod clone;
 
 use git::{
@@ -114,6 +115,7 @@ pub fn init(cx: &mut App) {
         branch_diff::BranchDiff::register(workspace, cx);
         CommitModal::register(workspace);
         git_panel::register(workspace);
+        gitea_comments::register(workspace);
         repository_selector::register(workspace);
         git_picker::register(workspace);
 

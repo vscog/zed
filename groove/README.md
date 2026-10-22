@@ -84,3 +84,29 @@ python3 groove/install-build.py /data/cache/zed-groove-target/debug/zed
 The installer copies the binary to `target/groove/zed-editor` in this checkout and links it from `~/.local/lib/zed-groove/zed-editor`. This development build reads assets from the checkout at runtime: keep the checkout in place. It backs up the current launcher and desktop entry, then points them at the custom build using the official CLI's `--zed` option. It disables official automatic updates so they cannot replace the custom UI. Rebuild this branch to update it. The official installation is retained at `~/.local/zed.app`.
 
 The `zed-groove` launcher includes the parent folder when opening a single existing file, so Thunar launches show a useful explorer tree. Existing HTML/browser associations remain unchanged.
+
+## Gitea commit comment history
+
+The native **Gitea Comment History** dock displays the same commit comments as the custom Gitea server. Open a tracked local file and run `gitea comments: toggle history` from the command palette. The panel can search the current file or the entire repository, refresh its contents, and open a comment's original source in Gitea. `gitea comments: toggle inline comments`, or the panel's **Inline** button, displays comments below their original code section.
+
+Configure the server in `~/.config/zed/gitea-comments.json`:
+
+```json
+{
+  "base_url": "http://100.126.2.20:3131",
+  "remote": "origin",
+  "token_command": ["/home/valentin/.local/bin/secret-store", "get", "gitea", "token"]
+}
+```
+
+The credential command is an argument array from user configuration, never a repository-provided shell command. Its token is kept in memory, sent only to the exact configured HTTP(S) origin/base path, and never forwarded through redirects. Python 3 supplies the background API reader; it has no third-party dependencies. The native Rust panel/editor blocks handle display and filtering. Missing configuration or API failures appear in the panel.
+
+Inline placement requires an identical Git blob and an unmodified editor buffer. Editing hides blocks; refresh compares again. Older comments remain searchable with original-source links, and renamed paths are not automatically remapped. Long comments have a bounded inline preview; the history panel retains the complete text. Fetching is explicitly initiated, with a maximum of 10,000 comments per refresh.
+
+Reader trust-boundary tests:
+
+```sh
+python3 crates/git_ui/src/gitea_comments_test.py
+```
+
+Build/install uses the existing instructions above. Restart Zed after installing a new binary. The new panel supplements the existing activity bar and Git UI.
