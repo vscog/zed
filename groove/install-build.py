@@ -13,9 +13,14 @@ binary=a.binary.resolve()
 if not binary.is_file(): raise SystemExit('Build the zed binary first')
 subprocess.run([str(binary),'--help'],check=True,stdout=subprocess.DEVNULL)
 home=Path.home();backup=home/'.local/state/zed-groove/backups'/str(time.time_ns());backup.mkdir(parents=True)
-app=home/'.local/lib/zed-groove';app.mkdir(parents=True,exist_ok=True)
+repo=Path(__file__).resolve().parents[1]
+app=repo/'target/groove';app.mkdir(parents=True,exist_ok=True)
 subprocess.run(['cp','--reflink=auto',str(binary),str(app/'.zed-editor.new')],check=True)
 os.replace(app/'.zed-editor.new',app/'zed-editor')
+link=home/'.local/lib/zed-groove/zed-editor'
+link.parent.mkdir(parents=True,exist_ok=True)
+if link.exists() or link.is_symlink(): link.unlink()
+link.symlink_to(app/'zed-editor')
 launcher=home/'.local/bin/zed-groove'
 launcher.write_text('''#!/usr/bin/env python3
 import os,sys

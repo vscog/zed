@@ -9694,6 +9694,7 @@ impl Render for Workspace {
                             .child(
                                 div()
                                     .id("workspace")
+                                    .h_full()
                                     .bg(colors.background)
                                     .relative()
                                     .flex_1()
