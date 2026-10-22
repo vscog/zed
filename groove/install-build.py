@@ -11,7 +11,7 @@ import time
 p=argparse.ArgumentParser();p.add_argument('binary',type=Path);a=p.parse_args()
 binary=a.binary.resolve()
 if not binary.is_file(): raise SystemExit('Build the zed binary first')
-subprocess.run([str(binary),'--version'],check=True)
+subprocess.run([str(binary),'--help'],check=True,stdout=subprocess.DEVNULL)
 home=Path.home();backup=home/'.local/state/zed-groove/backups'/str(time.time_ns());backup.mkdir(parents=True)
 app=home/'.local/lib/zed-groove';app.mkdir(parents=True,exist_ok=True)
 subprocess.run(['cp','--reflink=auto',str(binary),str(app/'.zed-editor.new')],check=True)
