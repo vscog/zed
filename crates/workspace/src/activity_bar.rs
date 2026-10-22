@@ -111,7 +111,7 @@ impl Workspace {
                         .child(
                             IconButton::new(id, icon)
                                 .icon_size(IconSize::Custom(rems(1.5)))
-                                .selected(selected)
+                                .toggle_state(selected)
                                 .aria_label(label)
                                 .tooltip(move |_, cx| {
                                     Tooltip::for_action(label, &*tooltip_action, cx)
