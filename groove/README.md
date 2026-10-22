@@ -8,7 +8,7 @@ Zed draws its own interface, so GTK/Thunar styles do not skin the editor. The co
 
 The fork includes `assets/themes/groove/groove.json`, changes the default dark theme, fonts, Vim mode, relative numbers, decorations and title-bar visibility in `assets/settings/default.json`, and extends `assets/keymaps/vim.json`. It keeps upstream functionality and the upstream remote for rebasing.
 
-The installed official release uses `~/.config/zed/settings.json`, `keymap.json`, and `themes/groove.json`. This makes the visible customization available immediately without rebuilding Zed. Source defaults affect future builds of this fork; the currently installed executable is not a custom compiled binary.
+The installed custom build uses `~/.config/zed/settings.json`, `keymap.json`, and `themes/groove.json`. The activity bar is implemented in Rust; the theme, editor preferences and agent configuration remain editable without a rebuild. The official installation is retained as the CLI transport and as a fallback.
 
 IDE setup includes a left project/Git panel, bottom terminal, breadcrumbs, sticky scopes, indentation guides, language-server completion and diagnostics, and format on save. Language-server and formatter availability depends on each project/language. Inlay hints remain off to keep the interface quiet. Title-bar sign-in prompts are hidden; account and agent features remain available.
 
@@ -51,7 +51,7 @@ Launch with `~/.local/bin/zed` or the standard desktop entry. `/usr/bin/zed` is 
 
 ## Validation
 
-Theme checked against Zed's official v0.2.0 JSON schema; modified upstream JSONC assets parsed successfully; shared renderer output compared against the installed theme. Launched Zed 1.25.2 on the live Wayland desktop and visually checked theme, Vim normal mode, relative line numbers, and the Space f f file picker. Logs showed no configuration/keymap/theme parse errors. Full Rust compilation of the fork has not been performed.
+Theme checked against Zed's official v0.2.0 JSON schema; modified upstream JSONC assets parsed successfully; shared renderer output compared against the installed theme. Launched Zed 1.25.2 on the live Wayland desktop and visually checked theme, Vim normal mode, relative line numbers, and the Space f f file picker. Logs showed no configuration/keymap/theme parse errors. The full custom binary was subsequently compiled successfully. The live Wayland UI was checked after fixing the activity-row height. Actual mouse clicks verified Explorer collapse/reopen, Source Control, Extensions and Search. Opening `configure.py` through GIO from `/tmp` launched the installed custom executable with its containing folder in the explorer. HTML still resolves to Firefox.
 
 Backups and screenshots remain local and are not included in the public fork.
 
@@ -81,6 +81,6 @@ CARGO_TARGET_DIR=/data/cache/zed-groove-target cargo build -p zed --bin zed -j 6
 python3 groove/install-build.py /data/cache/zed-groove-target/debug/zed
 ```
 
-The installer copies the binary to `~/.local/lib/zed-groove/zed-editor`, backs up the current launcher and desktop entry, then points them at the custom build using the official CLI's `--zed` option. It disables official automatic updates so they cannot replace the custom UI. Rebuild this branch to update it. The official installation is retained at `~/.local/zed.app`.
+The installer copies the binary to `target/groove/zed-editor` in this checkout and links it from `~/.local/lib/zed-groove/zed-editor`. This development build reads assets from the checkout at runtime: keep the checkout in place. It backs up the current launcher and desktop entry, then points them at the custom build using the official CLI's `--zed` option. It disables official automatic updates so they cannot replace the custom UI. Rebuild this branch to update it. The official installation is retained at `~/.local/zed.app`.
 
 The `zed-groove` launcher includes the parent folder when opening a single existing file, so Thunar launches show a useful explorer tree. Existing HTML/browser associations remain unchanged.
