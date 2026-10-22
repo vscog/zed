@@ -2,7 +2,19 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-\\": "terminal_panel::Toggle"
+      "ctrl-\\": "terminal_panel::Toggle",
+      "ctrl-alt-shift-c": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": "claude-acp"
+        }
+      ],
+      "ctrl-alt-shift-d": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": "codex-acp"
+        }
+      ]
     }
   },
   {
@@ -31,6 +43,19 @@
       "space z h": "terminal_panel::Toggle",
       "space v": "pane::SplitRight",
       "space s": "pane::SplitDown",
+      "space a a": "agent::ToggleFocus",
+      "space a c": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": "claude-acp"
+        }
+      ],
+      "space a d": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": "codex-acp"
+        }
+      ],
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",

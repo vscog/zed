@@ -76,19 +76,28 @@ def generate(palette):
         'theme': {'mode':'dark','dark':'Groove Ink Black','light':'One Light'},
         'vim_mode': True,
         'vim': {'use_system_clipboard':'always','toggle_relative_line_numbers':True,'use_smartcase_find':True},
-        'ui_font_family': t['ui_family'], 'ui_font_size':t['ui_size_px'],
-        'buffer_font_family':t['mono_family'], 'buffer_font_size':round(t['mono_size_pt']*4/3,2),
+        'ui_font_family': t['ui_family'], 'ui_font_size':16,
+        'buffer_font_family':t['mono_family'], 'buffer_font_size':14,
         'buffer_line_height':'comfortable', 'relative_line_numbers':'enabled',
         'window_decorations':'server',
         'title_bar':{'show_branch_name':True,'show_branch_status_icon':True,'show_onboarding_banner':False,'show_user_picture':False,'show_sign_in':False},
         'toolbar':{'breadcrumbs':True,'quick_actions':False,'selections_menu':False},
         'project_panel':{'dock':'left','default_width':250,'auto_reveal_entries':True},
         'git_panel':{'dock':'left'},
-        'terminal':{'dock':'bottom','default_height':260,'font_family':t['mono_family'],'font_size':round(t['mono_size_pt']*4/3,2),'working_directory':'current_project_directory'},
+        'terminal':{'dock':'bottom','default_height':260,'font_family':t['mono_family'],'font_size':14,'working_directory':'current_project_directory'},
         'indent_guides':{'enabled':True},'inlay_hints':{'enabled':False},
         'sticky_scroll':{'enabled':True},'use_smartcase_search':True,
         'format_on_save':'on','which_key':{'enabled':True},
     }
+    settings.update({
+        'agent_ui_font_size':14, 'agent_buffer_font_size':14,
+        'agent':{'enabled':True,'button':True,'dock':'right','default_width':640,'flexible':False},
+        'agent_servers':{
+            'codex-acp':{'type':'registry','env':{'CODEX_HOME':str(Path.home()/'.codex')}},
+            'claude-acp':{'type':'registry','env':{'CLAUDE_CONFIG_DIR':str(Path.home()/'.claude')}},
+        },
+        'auto_install_extensions':{name:True for name in ['html','toml','dockerfile','docker-compose','lua','nix','glsl','wgsl']},
+    })
     nav = dict(zip(['ctrl-h','ctrl-j','ctrl-k','ctrl-l'], ['workspace::ActivatePaneLeft','workspace::ActivatePaneDown','workspace::ActivatePaneUp','workspace::ActivatePaneRight']))
     bindings = {
         'space w':'workspace::Save','space q':'pane::CloseActiveItem',
@@ -100,10 +109,15 @@ def generate(palette):
         'space b d':'pane::CloseActiveItem','shift-h':'pane::ActivatePreviousItem','shift-l':'pane::ActivateNextItem',
         'space z z':'terminal_panel::Toggle','space z h':'terminal_panel::Toggle',
         'space v':'pane::SplitRight','space s':'pane::SplitDown',
+        'space a a':'agent::ToggleFocus',
+        'space a c':['agent::NewExternalAgentThread',{'agent':'claude-acp'}],
+        'space a d':['agent::NewExternalAgentThread',{'agent':'codex-acp'}],
         **nav,
     }
     keymap = [
-        {'context':'Workspace','bindings':{'ctrl-\\':'terminal_panel::Toggle'}},
+        {'context':'Workspace','bindings':{'ctrl-\\':'terminal_panel::Toggle',
+            'ctrl-alt-shift-c':['agent::NewExternalAgentThread',{'agent':'claude-acp'}],
+            'ctrl-alt-shift-d':['agent::NewExternalAgentThread',{'agent':'codex-acp'}]}},
         {'context':'Editor && vim_mode == normal && !menu','bindings':bindings},
         {'context':'ProjectPanel','bindings':nav},
     ]

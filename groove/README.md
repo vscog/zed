@@ -54,3 +54,16 @@ Launch with `~/.local/bin/zed` or the standard desktop entry. `/usr/bin/zed` is 
 Theme checked against Zed's official v0.2.0 JSON schema; modified upstream JSONC assets parsed successfully; shared renderer output compared against the installed theme. Launched Zed 1.25.2 on the live Wayland desktop and visually checked theme, Vim normal mode, relative line numbers, and the Space f f file picker. Logs showed no configuration/keymap/theme parse errors. Full Rust compilation of the fork has not been performed.
 
 Backups and screenshots remain local and are not included in the public fork.
+
+## Account-backed agents and extensions
+
+The interface now uses 16 px UI text and 14 px editor, terminal and agent text. These are fixed readability overrides to the shared desktop typography; the palette remains synchronized.
+
+Codex and Claude Agent are configured through Zed's ACP Registry, using the existing `~/.codex` ChatGPT login and `~/.claude` Claude Code subscription login. No credentials are copied into the repository. The external agents own authentication; Zed's native model-provider settings are separate. The AI panel is docked on the right.
+
+- Space a a: focus the AI panel.
+- Space a d: new Codex thread.
+- Space a c: new Claude thread.
+- Ctrl Alt Shift D/C: corresponding new threads from the workspace (editor-local bindings can take precedence).
+
+Automatically installed extensions: HTML, TOML, Dockerfile, Docker Compose, Lua, Nix, GLSL and WGSL. Python, Rust, JS/TS, JSON, YAML and Markdown support are provided by Zed itself; language servers may be installed on first use.

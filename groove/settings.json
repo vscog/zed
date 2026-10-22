@@ -11,9 +11,9 @@
     "use_smartcase_find": true
   },
   "ui_font_family": "Inter",
-  "ui_font_size": 13,
+  "ui_font_size": 16,
   "buffer_font_family": "GeistMono Nerd Font Mono",
-  "buffer_font_size": 13.33,
+  "buffer_font_size": 14,
   "buffer_line_height": "comfortable",
   "relative_line_numbers": "enabled",
   "window_decorations": "server",
@@ -41,7 +41,7 @@
     "dock": "bottom",
     "default_height": 260,
     "font_family": "GeistMono Nerd Font Mono",
-    "font_size": 13.33,
+    "font_size": 14,
     "working_directory": "current_project_directory"
   },
   "indent_guides": {
@@ -57,5 +57,38 @@
   "format_on_save": "on",
   "which_key": {
     "enabled": true
+  },
+  "agent_ui_font_size": 14,
+  "agent_buffer_font_size": 14,
+  "agent": {
+    "enabled": true,
+    "button": true,
+    "dock": "right",
+    "default_width": 640,
+    "flexible": false
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+      "env": {
+        "CODEX_HOME": "/home/valentin/.codex"
+      }
+    },
+    "claude-acp": {
+      "type": "registry",
+      "env": {
+        "CLAUDE_CONFIG_DIR": "/home/valentin/.claude"
+      }
+    }
+  },
+  "auto_install_extensions": {
+    "html": true,
+    "toml": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "lua": true,
+    "nix": true,
+    "glsl": true,
+    "wgsl": true
   }
 }
