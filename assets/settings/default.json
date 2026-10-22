@@ -882,11 +882,11 @@
     // Delay in milliseconds before tooltips appear for project panel titles.
     "title_tooltip_delay": "default",
     // Default width of the project panel.
-    "default_width": 240,
+    "default_width": 300,
     // Where to dock the project panel. Can be 'left' or 'right'.
-    "dock": "right",
+    "dock": "left",
     // Spacing between worktree entries in the project panel. Can be 'comfortable' or 'standard'.
-    "entry_spacing": "comfortable",
+    "entry_spacing": "standard",
     // Whether to show file icons in the project panel.
     "file_icons": true,
     // What to show for directories in the project panel.
@@ -897,11 +897,11 @@
     //   "chevron"
     // 3. A disclosure chevron followed by a folder icon:
     //   "both"
-    "folder_indicator": "icon",
+    "folder_indicator": "both",
     // Whether to show the git status in the project panel.
     "git_status": true,
     // Amount of indentation for nested items.
-    "indent_size": 20,
+    "indent_size": 16,
     // Whether to reveal it in the project panel automatically,
     // when a corresponding project entry becomes active.
     // Gitignored entries are never auto revealed.
@@ -910,7 +910,7 @@
     "starts_open": true,
     // Whether to fold directories automatically and show compact folders
     // (e.g. "a/b/c" ) when a directory has only one subdirectory inside.
-    "auto_fold_dirs": true,
+    "auto_fold_dirs": false,
     // Whether to show folder names with bold text in the project panel.
     "bold_folder_labels": false,
     // Scrollbar-related settings
@@ -1012,7 +1012,7 @@
     // Default width of the outline panel.
     "default_width": 300,
     // Where to dock the outline panel. Can be 'left' or 'right'.
-    "dock": "right",
+    "dock": "left",
     // Whether to show file icons in the outline panel.
     "file_icons": true,
     // What to show for directories in the outline panel.
@@ -1023,7 +1023,7 @@
     //   "chevron"
     // 3. A disclosure chevron followed by a folder icon:
     //   "both"
-    "folder_indicator": "icon",
+    "folder_indicator": "both",
     // Whether to show the git status in the outline panel.
     "git_status": true,
     // Amount of indentation for nested items.
@@ -1727,7 +1727,7 @@
   "disable_ai": false,
   // Automatically update Zed. This setting may be ignored on Linux if
   // installed through a package manager.
-  "auto_update": true,
+  "auto_update": false,
   // How to render LSP `textDocument/documentColor` colors in the editor.
   //
   // Possible values:

@@ -82,14 +82,16 @@ def generate(palette):
         'window_decorations':'server',
         'title_bar':{'show_branch_name':True,'show_branch_status_icon':True,'show_onboarding_banner':False,'show_user_picture':False,'show_sign_in':False},
         'toolbar':{'breadcrumbs':True,'quick_actions':False,'selections_menu':False},
-        'project_panel':{'dock':'left','default_width':250,'auto_reveal_entries':True},
+        'project_panel':{'dock':'left','default_width':300,'auto_reveal_entries':True,'starts_open':True,'file_icons':True,'folder_indicator':'both','entry_spacing':'standard','indent_size':16,'auto_fold_dirs':False,'git_status':True,'indent_guides':{'show':'always'}},
         'git_panel':{'dock':'left'},
+        'outline_panel':{'dock':'left','default_width':300,'file_icons':True,'folder_indicator':'both'},
         'terminal':{'dock':'bottom','default_height':260,'font_family':t['mono_family'],'font_size':14,'working_directory':'current_project_directory'},
         'indent_guides':{'enabled':True},'inlay_hints':{'enabled':False},
         'sticky_scroll':{'enabled':True},'use_smartcase_search':True,
         'format_on_save':'on','which_key':{'enabled':True},
     }
     settings.update({
+        'auto_update':False,
         'agent_ui_font_size':14, 'agent_buffer_font_size':14,
         'agent':{'enabled':True,'button':True,'dock':'right','default_width':640,'flexible':False},
         'agent_servers':{

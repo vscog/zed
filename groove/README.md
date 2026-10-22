@@ -67,3 +67,20 @@ Codex and Claude Agent are configured through Zed's ACP Registry, using the exis
 - Ctrl Alt Shift D/C: corresponding new threads from the workspace (editor-local bindings can take precedence).
 
 Automatically installed extensions: HTML, TOML, Dockerfile, Docker Compose, Lua, Nix, GLSL and WGSL. Python, Rust, JS/TS, JSON, YAML and Markdown support are provided by Zed itself; language servers may be installed on first use.
+
+## VS Code-style activity bar
+
+The fork adds a persistent 48 px activity rail to the left of the workspace. Explorer, Search, Source Control, Debug, Outline, Extensions, AI and Terminal use Zed's registered native actions. Settings stays at the bottom. Open dock panels have a blue indicator; clicking an active panel closes its dock. Search and Extensions open Zed's native center views. The former left-dock status-bar buttons are replaced by the rail.
+
+The file tree starts open on the left at 300 px, with file icons, folder chevrons, Git status and indentation guides. The outline shares the left dock. AI stays on the right and the terminal below.
+
+Build and install from this checkout:
+
+```sh
+CARGO_TARGET_DIR=/data/cache/zed-groove-target cargo build -p zed --bin zed -j 6
+python3 groove/install-build.py /data/cache/zed-groove-target/debug/zed
+```
+
+The installer copies the binary to `~/.local/lib/zed-groove/zed-editor`, backs up the current launcher and desktop entry, then points them at the custom build using the official CLI's `--zed` option. It disables official automatic updates so they cannot replace the custom UI. Rebuild this branch to update it. The official installation is retained at `~/.local/zed.app`.
+
+The `zed-groove` launcher includes the parent folder when opening a single existing file, so Thunar launches show a useful explorer tree. Existing HTML/browser associations remain unchanged.

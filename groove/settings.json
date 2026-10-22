@@ -31,11 +31,27 @@
   },
   "project_panel": {
     "dock": "left",
-    "default_width": 250,
-    "auto_reveal_entries": true
+    "default_width": 300,
+    "auto_reveal_entries": true,
+    "starts_open": true,
+    "file_icons": true,
+    "folder_indicator": "both",
+    "entry_spacing": "standard",
+    "indent_size": 16,
+    "auto_fold_dirs": false,
+    "git_status": true,
+    "indent_guides": {
+      "show": "always"
+    }
   },
   "git_panel": {
     "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left",
+    "default_width": 300,
+    "file_icons": true,
+    "folder_indicator": "both"
   },
   "terminal": {
     "dock": "bottom",
@@ -58,6 +74,7 @@
   "which_key": {
     "enabled": true
   },
+  "auto_update": false,
   "agent_ui_font_size": 14,
   "agent_buffer_font_size": 14,
   "agent": {
